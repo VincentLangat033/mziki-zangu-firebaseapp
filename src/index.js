@@ -1,6 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import {
-    getFirestore, collection, getDocs
+    getFirestore, collection, getDocs,
+    addDoc, deleteDoc, doc
+
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -40,3 +42,32 @@ console.log(songs)
  .catch(err =>{
     console.log(err.message)
  })
+
+
+//  Adding songs
+const addSongForm = document.querySelector('.add')
+addSongForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    addDoc(colRef, {
+        title: addSongForm.title.value,
+        artist: addSongForm.artist.value,
+    })
+    .then(()=>{
+        addSongForm.reset()
+
+    })
+})
+
+// deleting a song
+const deleteSongForm = document.querySelector('.delete')
+deleteSongForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    const docRef = doc(db, 'songs', deleteSongForm.id.value)
+    deleteDoc(docRef)
+     .then(()=>{
+
+        deleteSongForm.reset()
+        
+     })
+
+})
