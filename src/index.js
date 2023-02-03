@@ -34,7 +34,7 @@ getDocs(colRef)
         songs.push({
             ...doc.data(), id: doc.id
         })
-    })
+    }) 
 console.log(songs)
  })
  .catch(err =>{
