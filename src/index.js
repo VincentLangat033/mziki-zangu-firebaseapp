@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import {
-    getFirestore, collection, getDocs,
-    addDoc, deleteDoc, doc
+    getFirestore, collection, getDocs, onSnapshot,
+    addDoc, deleteDoc, doc,
+    query, where
 
 } from 'firebase/firestore'
 
@@ -27,20 +28,49 @@ const db = getFirestore()
 const colRef = collection( db, 'songs')
 
 
-// get collection data
-getDocs(colRef)
- .then((snapshot)=>{
-    console.log(snapshot.docs)
+// // get collection data
+// getDocs(colRef)
+//  .then((snapshot)=>{
+//     console.log(snapshot.docs)
+//     let songs = []
+//     snapshot.docs.forEach((doc)=>{
+//         songs.push({
+//             ...doc.data(), id: doc.id
+//         })
+//     }) 
+// console.log(songs)
+//  })
+//  .catch(err =>{
+//     console.log(err.message)
+//  })
+
+
+//  Queries
+const q = query(colRef, where("artist", "==", "Vincent Langat" ))
+onSnapshot(q, (snapshot)=>{
     let songs = []
     snapshot.docs.forEach((doc)=>{
         songs.push({
             ...doc.data(), id: doc.id
         })
     }) 
-console.log(songs)
+    console.log(songs)
+
+
  })
- .catch(err =>{
-    console.log(err.message)
+
+
+ //  Real time data collection 
+ onSnapshot(colRef, (snapshot)=>{
+    let songs = []
+    snapshot.docs.forEach((doc)=>{
+        songs.push({
+            ...doc.data(), id: doc.id
+        })
+    }) 
+    console.log(songs)
+
+
  })
 
 
