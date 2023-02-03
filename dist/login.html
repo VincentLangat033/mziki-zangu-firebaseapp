@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sound Blender</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="../src/css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+		integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-landing container-fluid">
+		<!-- Nav Bar -->
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand brand" href="index.html">Sound Blender</a>
+
+
+
+			<div class="navbar-collapse" id="collapsedMenu">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Home</a>
+					</li>
+					<li class="nav-item nav-link">
+						<a href="login.html" class="button3 signup">Sign In</a>
+					</li>
+			</div>
+		</nav>
+	</div>
+
+
+	<div class="content">
+
+    <div id="login-box">
+        <div class="left">
+          <h1>Log in</h1>
+          <form id="login">
+            <input type="text" name="email" placeholder="Email"/>
+            <input type="password" name="password" placeholder="Password"/>
+            <input type="submit" name="login_submit" value="LOG IN"/>
+          </form>
+          
+        </div>
+        
+        
+         
+        <div class="right">
+            <p class="loginwith">Log in with<br/>social network</p>
+            <div class="items">
+                <button class="social-signin facebook" id="fb">Facebook</button>
+                <button class="social-signin twitter" id="twitter">Twitter</button>
+                <button class="social-signin google" id="google">Google</button>
+            </div> 
+        </div>
+        <div class="or">OR</div>       
+      </div>
+</div>
+
+
+<div class="sign_up">
+  <p> 
+    Don't have an account yet?  
+    <a href="signup.html" >Sign Up</a>
+   </p>
+</div>
+
+
+	<div class="footer">
+		<p>© Copyright 2023 Soundblender</p>
+	</div>
+
+	<script type="module" src="js/login.js"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
