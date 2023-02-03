@@ -1,14 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mziki App</title>
-</head>
-<body>
-    <h1> Setting up Mziki App</h1>
 
-    <script src="bundle.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mziki Zangu</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../src/css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+    integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="landing">
+    <div class="container-landing container-fluid">
+   
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand brand" href="">Mziki Zangu</a>
+
+
+
+        <div class="navbar-collapse" id="collapsedMenu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item nav-link">
+              <a href="login.html" class="button3 signup">Sign In</a>
+            </li>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+  <div class="row-cta" style="height: 480px">
+    <div class="left-column">
+        <p>
+            All your streaming
+services in one place.
+Browse, search, and watch TV & Movies from over 150 services, Netflix, Hulu, HBO, Disney+, Prime Video, Free Services and more! LEARN MORE
+        </p>
+  
+
+
+      
+        <div class="buttons">
+            <a href="music.html"> <button id='playBanner'>Play  Music</button>    </a>
+            <a href="music.html"><button id='playBanner'>My Playlist</button> </a>
+        </div>
+   
+    </div>
+    <div class="right-column">
+      <!-- <img src="https://www.theladders.com/wp-content/uploads/music-happy-190826-1490x838.jpg" 
+      alt="listening to music"> -->
+      
+      <img src="https://imgs.search.brave.com/bFJpGYRJzAz6Fp9w4cLu4CBNl6RyUD2irijPOtiAbUo/rs:fit:713:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4x/WGhnU0hUY3M4UTFO/OVJpaDcyMWhnSGFF/NyZwaWQ9QXBp" 
+      alt="listening to music">
+    </div>
+    <p> </p>
+  </div>
+
+
+
+  <div class="footer">
+    <p>© 2023</p>
+  </div>
+  <script src="bundle.js"></script>
+  <script src="../src/index.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </body>
+
 </html>
