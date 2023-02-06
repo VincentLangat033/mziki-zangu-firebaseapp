@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore'
 import {
     getAuth, createUserWithEmailAndPassword,
+    signOut, signInWithEmailAndPassword
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -36,6 +37,39 @@ console.log("Init App")
 
 console.log('Signing user up')
 
+// log out
+
+const logoutButton = document.querySelector('#logout1')
+logoutButton.addEventListener('click', ()=>{
+    console.log("User wants to sign out")
+    signOut(auth)
+     .then(()=>{
+        console.log("user signed out ...")
+       })
+      .catch((err)=>{
+        console.log(err.message)
+       })
+
+})
+
+//  Logging in and out
+const loginForm = document.querySelector('.login')
+loginForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    const email = loginForm.email.value
+    const password = loginForm.password.value
+    signInWithEmailAndPassword(auth, email, password)
+     .then((cred)=>{
+        console.log('user logged in:', cred.user)
+        loginForm.reset()
+
+     })
+     .catch((err)=>{
+        console.log(err.message)
+        loginForm.reset()
+     })
+})
+
 //  Signing user up
 const signupForm = document.querySelector('#signup')
 signupForm.addEventListener('submit', (e)=>{
@@ -53,6 +87,17 @@ signupForm.addEventListener('submit', (e)=>{
         err.message
     })
 })
+
+
+
+ 
+
+
+
+
+
+
+
 //  get a reference to a specific collection in our database
 const colRef = collection( db, 'songs')
 
