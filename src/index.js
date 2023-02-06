@@ -2,9 +2,16 @@ import { initializeApp } from 'firebase/app'
 import {
     getFirestore, collection, getDocs, onSnapshot,
     addDoc, deleteDoc, doc,
-    query, where
+    query, where,
+    orderBy,
+    serverTimestamp,
+    getDoc, updateDoc
+
 
 } from 'firebase/firestore'
+import {
+    getAuth,
+} from 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: "AIzaSyAocO5ICpbpe91b9h8MRtXlFE1rHG4Kscc",
@@ -22,6 +29,7 @@ initializeApp(firebaseConfig)
 
 //  Initialize Firestore services
 const db = getFirestore()
+const auth = getAuth()
 
 
 //  get a reference to a specific collection in our database
@@ -46,7 +54,9 @@ const colRef = collection( db, 'songs')
 
 
 //  Queries
-const q = query(colRef, where("artist", "==", "Vincent Langat" ))
+//where("artist", "==", "Vincent Langat" ),
+const q = query(colRef,  orderBy('createdAt'))
+
 onSnapshot(q, (snapshot)=>{
     let songs = []
     snapshot.docs.forEach((doc)=>{
@@ -61,17 +71,16 @@ onSnapshot(q, (snapshot)=>{
 
 
  //  Real time data collection 
- onSnapshot(colRef, (snapshot)=>{
-    let songs = []
-    snapshot.docs.forEach((doc)=>{
-        songs.push({
-            ...doc.data(), id: doc.id
-        })
-    }) 
-    console.log(songs)
-
-
- })
+//  onSnapshot(colRef, (snapshot)=>{
+//     let songs = []
+//     snapshot.docs.forEach((doc)=>{
+//         songs.push({
+//             ...doc.data(), id: doc.id
+//         })
+//     }) 
+   
+//     console.log(songs)
+//  })
 
 
 //  Adding songs
@@ -81,6 +90,7 @@ addSongForm.addEventListener('submit', (e)=>{
     addDoc(colRef, {
         title: addSongForm.title.value,
         artist: addSongForm.artist.value,
+        createdAt: serverTimestamp()
     })
     .then(()=>{
         addSongForm.reset()
@@ -101,3 +111,42 @@ deleteSongForm.addEventListener('submit', (e)=>{
      })
 
 })
+
+
+
+//  get a single song
+const docRef = doc(db, 'songs', '9znSLjOkxtticeH51Tjn')
+getDoc(docRef)
+ .then((doc)=>{
+    console.log(doc.data(), doc.id)
+ })
+
+//  get real time data of a single song
+ /*
+onSnapshot(docRef, (doc)=>
+{
+    console.log(doc.data(), doc.id)
+
+})
+*/
+
+//  Updating a Song
+const updateForm = document.getElementsByClassName('updated1')
+updateForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    console.log("This field has been traced")
+
+
+    const docRef = doc(db, 'songs', updateForm.id.value)
+
+    updateDoc(docRef, {
+        title: 'Updated title'
+    })
+    .then(()=>{
+        updateForm.reset()
+
+    })
+
+})
+
+
