@@ -19,7 +19,7 @@
 	<div class="container-landing container-fluid">
 		<!-- Nav Bar -->
 		<nav class="navbar navbar-expand-lg">
-			<a class="navbar-brand brand" href="index.html">Sound Blender</a>
+			<a class="navbar-brand brand" href="index.html">Music App</a>
 
 
 
@@ -42,10 +42,15 @@
         <div class="left">
           <h1>Log in</h1>
           <form id="login">
-            <input type="text" name="email" placeholder="Email"/>
+            <input type="email" name="email" placeholder="Email"/>
             <input type="password" name="password" placeholder="Password"/>
-            <input type="submit" name="login_submit" value="LOG IN"/>
+            <input type="submit" name="login_submit" value="login" />
           </form>
+		  <p>
+			Logout
+
+		  </p>
+		  <button class="logout">Log out</button>
           
         </div>
         
@@ -76,8 +81,7 @@
 		<p>© Copyright 2023 Soundblender</p>
 	</div>
 
-	<script type="module" src="js/login.js"></script>
-	<script src="app.js"></script>
+	<script async src="bundle.js"></script>
 </body>
 
 </html>

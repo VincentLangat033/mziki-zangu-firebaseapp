@@ -10,7 +10,7 @@ import {
 
 } from 'firebase/firestore'
 import {
-    getAuth,
+    getAuth, createUserWithEmailAndPassword,
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -31,7 +31,28 @@ initializeApp(firebaseConfig)
 const db = getFirestore()
 const auth = getAuth()
 
+console.log("Init App")
 
+
+console.log('Signing user up')
+
+//  Signing user up
+const signupForm = document.querySelector('#signup')
+signupForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    const email = signupForm.email.value
+    const password = signupForm.password.value
+    createUserWithEmailAndPassword(
+        auth,email,password
+    )
+    .then((cred)=>{
+        console.log('User created :', cred.user)
+        signupForm.reset()
+    })
+    .catch((err)=>{
+        err.message
+    })
+})
 //  get a reference to a specific collection in our database
 const colRef = collection( db, 'songs')
 
@@ -57,34 +78,34 @@ const colRef = collection( db, 'songs')
 //where("artist", "==", "Vincent Langat" ),
 const q = query(colRef,  orderBy('createdAt'))
 
-onSnapshot(q, (snapshot)=>{
-    let songs = []
-    snapshot.docs.forEach((doc)=>{
-        songs.push({
-            ...doc.data(), id: doc.id
-        })
-    }) 
-    console.log(songs)
-
-
- })
-
-
- //  Real time data collection 
-//  onSnapshot(colRef, (snapshot)=>{
+// onSnapshot(q, (snapshot)=>{
 //     let songs = []
 //     snapshot.docs.forEach((doc)=>{
 //         songs.push({
 //             ...doc.data(), id: doc.id
 //         })
 //     }) 
-   
 //     console.log(songs)
+
+
 //  })
 
 
+//   Real time data collection 
+ onSnapshot(colRef, (snapshot)=>{
+    let songs = []
+    snapshot.docs.forEach((doc)=>{
+        songs.push({
+            ...doc.data(), id: doc.id
+        })
+    }) 
+   
+    console.log(songs)
+ })
+
+
 //  Adding songs
-const addSongForm = document.querySelector('.add')
+const addSongForm = document.querySelector('#song23')
 addSongForm.addEventListener('submit', (e)=>{
     e.preventDefault()
     addDoc(colRef, {
@@ -131,7 +152,7 @@ onSnapshot(docRef, (doc)=>
 */
 
 //  Updating a Song
-const updateForm = document.getElementsByClassName('updated1')
+const updateForm = document.querySelector('updated1')
 updateForm.addEventListener('submit', (e)=>{
     e.preventDefault()
     console.log("This field has been traced")
