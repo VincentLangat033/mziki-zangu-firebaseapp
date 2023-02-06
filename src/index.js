@@ -11,7 +11,8 @@ import {
 } from 'firebase/firestore'
 import {
     getAuth, createUserWithEmailAndPassword,
-    signOut, signInWithEmailAndPassword
+    signOut, signInWithEmailAndPassword,
+    onAuthStateChanged
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -36,6 +37,12 @@ console.log("Init App")
 
 
 console.log('Signing user up')
+
+//  Subscribing to auth changes
+onAuthStateChanged(auth, (user)=>{
+    console.log('user status changed: ', user)
+
+})
 
 // log out
 
