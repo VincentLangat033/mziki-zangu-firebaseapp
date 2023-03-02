@@ -1,45 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
 
+
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mziki Zangu</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../src/css/style.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
-    integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
-
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- <link rel="stylesheet" href="../src/css/style2.css"> -->
+  <title>GameGuidez</title>
 </head>
+<body class="grey lighten-3">
 
-<body>
-  <div class="landing">
-    <div class="container-landing container-fluid">
-   
-      <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand brand" href="">Mziki Zangu</a>
+  <!-- NAVBAR -->
+  <nav class="z-depth-0 grey lighten-4">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">
+        <img src="img/logo.svg" style="width: 180px; margin-top: 10px;">
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="logged-in">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="grey-text" id="logout">Logout</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+          </li>
+          <li class="logged-out">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+          </li>
+          <li class="logged-out">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+          </li>
+        </span>
+      </ul>
+    </div>
+  </nav>
 
+  
 
-
-        <div class="navbar-collapse" id="collapsedMenu">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item nav-link">
-              <a href="login.html" class="button3 signup">Sign In</a>
-            </li>
+  <!-- SIGN UP MODAL -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
         </div>
-      </nav>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+        
+      </form> <br>
+      <button class="btn yellow darken-2 z-depth-0 login-anonymous">Login Anonymously</button>
+
+      <button class="social-signin github" id="twitter">Github</button>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <h4>Account details</h4><br />
+      <div class="account-details"></div>
+      <div class="account-extras"></div>
     </div>
   </div>
 
 
-  <div class="row-cta" style="height: 480px">
+  <!-- <div class="row-cta" style="height: 480px">
     <div class="left-column">
         <p>
             All your streaming
@@ -59,26 +112,129 @@ Browse, search, and watch TV & Movies from over 150 services, Netflix, Hulu, HBO
 
    
     </div>
-    <div class="right-column">
-      <!-- <img src="https://www.theladders.com/wp-content/uploads/music-happy-190826-1490x838.jpg" 
-      alt="listening to music"> -->
-      
-      <img src="https://imgs.search.brave.com/bFJpGYRJzAz6Fp9w4cLu4CBNl6RyUD2irijPOtiAbUo/rs:fit:713:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4x/WGhnU0hUY3M4UTFO/OVJpaDcyMWhnSGFF/NyZwaWQ9QXBp" 
-      alt="listening to music">
-    </div>
+
     <p> </p>
+  </div> -->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Create Song</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Artist name</label>
+        </div>
+        <div class="input-field">
+          <textarea id="content" class="materialize-textarea" required></textarea>
+          <label for="content">Song Title</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Create</button>
+      </form>
+    </div>
   </div>
+
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+    
+      <li>
+        <div class="collapsible-header grey lighten-4">Guide title</div>
+        <div class="collapsible-body white">Lorem ipsum dolor sit amet.</div>
+      </li>
+      <li>
+        <div class="collapsible-header grey lighten-4">Guide title</div>
+        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header grey lighten-4">Guide title</div>
+        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header grey lighten-4">Guide title</div>
+        <div class="collapsible-body white"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li> 
+    </ul>
+  </div>
+
+<h2> Unsubscribing</h2>
+<button class="unsub"> unsubscribe from db/auth changes</button>
 
 
 
   <div class="footer">
     <p>© 2023</p>
   </div>
-  <script async  src="bundle.js"></script>
+
+  
+  <!-- <script async  src="bundle.js"></script>
   <script async  src="../src/index.js"></script>
+  <script async  src="../src/auth.js"></script> -->
+    <!-- CREATE GUIDE MODAL -->
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-</body>
+  
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDlDUJhsP0_uh-YpaRfTOhWZsyY_hLukTw",
+      authDomain: "net-ninja-sandbox.firebaseapp.com",
+      databaseURL: "https://net-ninja-sandbox.firebaseio.com",
+      projectId: "net-ninja-sandbox"
+    };
+    firebase.initializeApp(config);
+    
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
+    // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+  </script> -->
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <!-- <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAocO5ICpbpe91b9h8MRtXlFE1rHG4Kscc",
+    authDomain: "mziki-zangu-firebase-app.firebaseapp.com",
+    projectId: "mziki-zangu-firebase-app",
+    storageBucket: "mziki-zangu-firebase-app.appspot.com",
+    messagingSenderId: "927210747647",
+    appId: "1:927210747647:web:d5fcf88cc3c96c27f87eca",
+    measurementId: "G-Q9S3XX3WHV"
+    };
+    firebase.initializeApp(config);
+    
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+
+
+  </script> -->
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script async  src="bundle.js"></script>
+  <script src="../src/index.js"></script>
+  <script src="../src/auth.js"></script>
+  <script src="../dist/dashboard/js/app.js"></script>
+  <!-- <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script> -->
+</body>
 </html>
+
+
+<!-- match songs in the guides collection
+match /guides/{guideId}{
+  allow read, write: if request.auth.uid != null;
+}
+-->
