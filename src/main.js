@@ -1,19 +1,8 @@
-import { initializeApp } from 'firebase/app'
+document.addEventListener('DOMContentLoaded',function(){
+  var modals = document.querySelectorAll('.modal');
+  M.Modal.init(modals);
 
-import {
-    getAuth, createUserWithEmailAndPassword,
-} from 'firebase/auth'
+  var items = document.querySelectorAll('.collapsible');
+  M.Collapsible.init(items);
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAocO5ICpbpe91b9h8MRtXlFE1rHG4Kscc",
-    authDomain: "mziki-zangu-firebase-app.firebaseapp.com",
-    projectId: "mziki-zangu-firebase-app",
-    storageBucket: "mziki-zangu-firebase-app.appspot.com",
-    messagingSenderId: "927210747647",
-    appId: "1:927210747647:web:d5fcf88cc3c96c27f87eca",
-    measurementId: "G-Q9S3XX3WHV"
-  };
-
-//    Initialize firebase app
-initializeApp(firebaseConfig)
-const auth = getAuth()
+});
