@@ -1,4 +1,18 @@
 // import { getAuth, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { initializeApp } from 'firebase/app'
+import {
+    getFirestore, collection, getDocs, onSnapshot,
+    addDoc, deleteDoc, doc,
+    query, where,
+    orderBy,
+    serverTimestamp,
+    getDoc, updateDoc
+} from 'firebase/firestore'
+import {
+    getAuth, createUserWithEmailAndPassword,
+    signOut, signInWithEmailAndPassword,
+    onAuthStateChanged, signInAnonymously
+} from 'firebase/auth'
 
 //  Listen for auth status changes
 var config = {
@@ -10,15 +24,18 @@ var config = {
   appId: "1:927210747647:web:d5fcf88cc3c96c27f87eca",
   measurementId: "G-Q9S3XX3WHV"
   };
-  firebase.initializeApp(config);
+initializeApp(config);
+const db = getFirestore()
+const auth = getAuth()
   
-  // make auth and firestore references
-  const auth = firebase.auth();
-  const db = firebase.firestore();
+//   // make auth and firestore references
+//   const auth = firebase.auth();
+//   const db = firebase.firestore();
 
-  // update firestore settings
-  db.settings({ timestampsInSnapshots: true });
-auth.onAuthStateChanged((user)=>{
+//   // update firestore settings
+//   db.settings({ timestampsInSnapshots: true });
+
+onAuthStateChanged(auth, (user)=>{
     if (user){
         // get data
 db.collection('songs').get()
@@ -52,7 +69,7 @@ signupForm.addEventListener('submit', (e)=>{
     const password = signupForm['signup-password'].value;
 
     //  Sign up the user
-    auth.createUserWithEmailAndPassword(email,password)
+    createUserWithEmailAndPassword(auth, email,password)
      .then((cred)=>{
         // console.log(cred)
         const modal = document.querySelector('#modal-signup');
@@ -68,7 +85,7 @@ signupForm.addEventListener('submit', (e)=>{
 const logout = document.querySelector('#logout');
 logout.addEventListener('click',(e)=>{
     e.preventDefault();   
-    auth.signOut()
+    signOut()
      .then(()=>{
         console.log("user is logged out successfully");
      })
@@ -87,7 +104,7 @@ loginForm.addEventListener('submit', (e)=>{
     const email = loginForm['login-email'].value;
     const password = loginForm['login-password'].value;
 
-    auth.signInWithEmailAndPassword(email,password)
+    signInWithEmailAndPassword(auth,email,password)
     .then((cred)=>{
         // console.log(cred.user)
         const modal = document.querySelector('#modal-login');
@@ -103,7 +120,7 @@ loginForm.addEventListener('submit', (e)=>{
  const btnLogin = document.querySelector('.login-anonymous')
  btnLogin.addEventListener('click', (e)=>{
     e.preventDefault();
-    auth.signInAnonymously();
+    signInAnonymously();
     const modal = document.querySelector('#modal-login');
     M.Modal.getInstance(modal).close();
     window.location.href = "dashboard.html"
@@ -114,9 +131,9 @@ loginForm.addEventListener('submit', (e)=>{
 //  Log in user using Github
 
 
-const github = document.querySelector('.github')
-github.addEventListener('click', (e)=>{
-    e.preventDefault();
+// const github = document.querySelector('.github')
+// github.addEventListener('click', (e)=>{
+//     e.preventDefault();
 
 
 
@@ -128,27 +145,27 @@ github.addEventListener('click', (e)=>{
 //   });
 
 
-const authenticate = auth.getAuth();
-const provider = auth.GithubAuthProvider();
-signInWithPopup(authenticate, provider)
-  .then((result) => {
-    // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-    const credential = auth.GithubAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    console.log('So far so great')
+// const authenticate = auth.getAuth();
+// const provider = auth.GithubAuthProvider();
+// signInWithPopup(authenticate, provider)
+//   .then((result) => {
+//     // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+//     const credential = auth.GithubAuthProvider.credentialFromResult(result);
+//     const token = credential.accessToken;
+//     console.log('So far so great')
 
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = auth.GithubAuthProvider.credentialFromError(error);
-    // ...
-  });
-})
+//     // The signed-in user info.
+//     const user = result.user;
+//     // IdP data available using getAdditionalUserInfo(result)
+//     // ...
+//   }).catch((error) => {
+//     // Handle Errors here.
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // The email of the user's account used.
+//     const email = error.customData.email;
+//     // The AuthCredential type that was used.
+//     const credential = auth.GithubAuthProvider.credentialFromError(error);
+//     // ...
+//   });
+// })
